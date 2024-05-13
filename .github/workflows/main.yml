@@ -13,9 +13,6 @@ jobs:
     - uses: actions/checkout@v2
 
     - name: Set up Docker
-      uses: actions/setup-docker@v2
-      with:
-        dockerfile: Dockerfile
-
-    - name: Build and run Redis server
-      run: docker-compose up -d
+      run: |
+        docker build .
+        docker run -d -p 6379:6379 redis
